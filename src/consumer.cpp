@@ -1,12 +1,12 @@
-#include "zigros_examples/subscription.hpp"
+#include "zigros_examples/consumer.hpp"
 
 namespace zigros_examples
 {
 
-Subscription::Subscription(rclcpp::NodeOptions options)
+Consumer::Consumer(rclcpp::NodeOptions options)
 : node_{"subscription", options},
   subscription_{node_.create_subscription<zigros_example_interface::msg::Example>(
-    "test", 1,
+    "talker/out", 1,
     [this](zigros_example_interface::msg::Example::ConstSharedPtr msg) {
       RCLCPP_INFO_STREAM(node_.get_logger(), "Time: " << msg->time.sec);
       if (prev_msg_) {

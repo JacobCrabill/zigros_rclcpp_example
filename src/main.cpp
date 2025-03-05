@@ -1,6 +1,6 @@
-#include "zigros_examples/publisher.hpp"
+#include "zigros_examples/consumer.hpp"
+#include "zigros_examples/producer.hpp"
 #include "zigros_examples/service.hpp"
-#include "zigros_examples/subscription.hpp"
 
 int main(int argc, char * argv[])
 {
@@ -8,11 +8,11 @@ int main(int argc, char * argv[])
 
   auto node_options = rclcpp::NodeOptions().use_intra_process_comms(true);
 
-  // instantiate your applicatin nodes.
-  // this replaces your launch file.
+  // Instantiate your application nodes.
+  // This replaces your launch file.
   // all normal launch arguments can be passed using the node options
-  auto publisher = zigros_examples::Publisher(node_options);
-  auto subscription = zigros_examples::Subscription(node_options);
+  auto publisher = zigros_examples::Producer(node_options);
+  auto subscription = zigros_examples::Consumer(node_options);
   auto service = zigros_examples::Service(node_options);
 
   // For simplicity all nodes are added to the same executor.
